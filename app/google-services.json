@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "393113086258",
+    "project_id": "buudiesapp",
+    "storage_bucket": "buudiesapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:393113086258:android:b1a85da339435892dbcf2b",
+        "android_client_info": {
+          "package_name": "com.guritchistudios.buudiesapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "393113086258-32rnppo1mhpu639qvdf4di5rhqsakj32.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClF5x5yZBHljObHm-F-g0y8txYhEOESEc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "393113086258-32rnppo1mhpu639qvdf4di5rhqsakj32.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
