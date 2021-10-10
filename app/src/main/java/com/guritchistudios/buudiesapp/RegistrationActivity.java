@@ -1,6 +1,7 @@
 package com.guritchistudios.buudiesapp;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -35,6 +36,10 @@ public class RegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Create account.");
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         name = findViewById(R.id.register_name);
         email = findViewById(R.id.register_email);
@@ -42,6 +47,9 @@ public class RegistrationActivity extends AppCompatActivity {
         mRegister = findViewById(R.id.register_button);
         existingAccount = findViewById(R.id.homepage);
 
+        mAuth = FirebaseAuth.getInstance();
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Register");
 
         mRegister.setOnClickListener(view -> {
             String userName = name.getText().toString().trim();
