@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.WindowDecorActionBar;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -60,6 +61,13 @@ public class LoginActivity extends AppCompatActivity {
                 }else {
                     loginUser(userEmail, userPass);
                 }
+            }
+        });
+
+        needNewAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this, RegistrationActivity.class));
             }
         });
     }
