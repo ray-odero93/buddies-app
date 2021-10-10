@@ -102,5 +102,14 @@ public class LoginActivity extends AppCompatActivity {
                 startRecovery(userEmail);
             }
         });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+
+        builder.create().show();
     }
 }
