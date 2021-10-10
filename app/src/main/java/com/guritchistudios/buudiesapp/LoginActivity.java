@@ -8,6 +8,7 @@ import androidx.appcompat.app.WindowDecorActionBar;
 import android.app.ProgressDialog;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,5 +43,24 @@ public class LoginActivity extends AppCompatActivity {
         mLogin = findViewById(R.id.login_button);
         mAuth = FirebaseAuth.getInstance();
         loadingBar = new ProgressDialog(this);
+
+        if (mAuth != null) {
+            currentUser = mAuth.getCurrentUser();
+        }
+
+        mLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String userEmail = email.getText().toString().trim();
+                String userPass = password.getText().toString().trim();
+
+                if (!Patterns.EMAIL_ADDRESS.matcher(userEmail).matches()) {
+                    email.setError("Invalid email address.");
+                    email.setFocusable(true);
+                }else {
+                    loginUser(userEmail, userPass);
+                }
+            }
+        });
     }
 }
