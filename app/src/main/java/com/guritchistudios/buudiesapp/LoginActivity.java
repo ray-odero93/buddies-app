@@ -5,6 +5,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.WindowDecorActionBar;
 
+import android.app.ProgressDialog;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
@@ -23,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView needNewAccount, recoveryPass;
     FirebaseUser currentUser;
     private FirebaseAuth mAuth;
-    private ProgressBar loadingBar;
+    private ProgressDialog loadingBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,5 +39,8 @@ public class LoginActivity extends AppCompatActivity {
         password = findViewById(R.id.login_pass);
         needNewAccount = findViewById(R.id.new_account);
         recoveryPass = findViewById(R.id.forget_pass);
+        mLogin = findViewById(R.id.login_button);
+        mAuth = FirebaseAuth.getInstance();
+        loadingBar = new ProgressDialog(this);
     }
 }
