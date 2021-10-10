@@ -1,5 +1,6 @@
 package com.guritchistudios.buudiesapp;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +21,11 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -111,5 +116,35 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         builder.create().show();
+    }
+
+    private void startRecovery(String userEmail) {
+        loadingBar.setMessage("Sending e-mail...");
+        loadingBar.setCanceledOnTouchOutside(false);
+        loadingBar.show();
+
+        mAuth.sendPasswordResetEmail(userEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                loadingBar.dismiss();
+                if (task.isSuccessful()) {
+                    Toast.makeText(LoginActivity.this, "E-mail sent.", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(LoginActivity.this, "Sending failed.", Toast.LENGTH_LONG).show();
+                }
+            }
+        })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        loadingBar.dismiss();
+                        Toast.makeText(LoginActivity.this, "Error occured.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    private void loginUser(String userEmail, String userPass) {
+        loadingBar.setMessage("Logging in...");
+        loadingBar.show();
     }
 }
