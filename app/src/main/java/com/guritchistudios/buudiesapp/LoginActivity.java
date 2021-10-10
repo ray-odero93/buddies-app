@@ -180,8 +180,23 @@ public class LoginActivity extends AppCompatActivity {
                     mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(mainIntent);
                     finish();
-                } else {}
+                } else {
+                    loadingBar.dismiss();
+                    Toast.makeText(LoginActivity.this, "Login failed.", Toast.LENGTH_LONG).show();
+                }
             }
-        });
+        })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        loadingBar.dismiss();
+                        Toast.makeText(LoginActivity.this, "Error occured.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return super.onSupportNavigateUp();
     }
 }
