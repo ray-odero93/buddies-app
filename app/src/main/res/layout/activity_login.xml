@@ -56,6 +56,24 @@
                 android:hint="@string/pass_hint"
                 android:minHeight="48dp" />
 
+            <TextView
+                android:id="@+id/forget_pass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/login_pass"/>
+
+            <Button
+                android:id="@+id/login_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/forget_pass"/>
+
+            <TextView
+                android:id="@+id/new_account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/login_button"/>
+
         </RelativeLayout>
 
     </ScrollView>
