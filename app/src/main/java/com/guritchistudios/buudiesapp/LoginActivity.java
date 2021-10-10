@@ -175,7 +175,12 @@ public class LoginActivity extends AppCompatActivity {
                         DatabaseReference reference = database.getReference("Users");
                         reference.child(userId).setValue(hashMap);
                     }
-                }
+                    Toast.makeText(LoginActivity.this, "Registered user" + user.getEmail(), Toast.LENGTH_LONG).show();
+                    Intent mainIntent = new Intent(LoginActivity.this, RegistrationActivity.class);
+                    mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(mainIntent);
+                    finish();
+                } else {}
             }
         });
     }
