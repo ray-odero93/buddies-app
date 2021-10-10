@@ -57,6 +57,12 @@ public class RegistrationActivity extends AppCompatActivity {
                 registerUser(userName, userEmail, userPass);
             }
         });
+        existingAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
+            }
+        });
     }
 
     private void registerUser(final String userName, String userEmail, final  String userPass) {
