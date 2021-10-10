@@ -4,11 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:layout_marginTop="50dp"
+        android:text="@string/header_text"/>
 
     <TextView
         android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/header"
         android:text="@string/name_text" />
 
     <EditText
@@ -63,5 +73,14 @@
         android:layout_below="@+id/register_pass"
         tools:ignore="SpeakableTextPresentCheck"
         android:text="@string/button_text"/>
+
+    <TextView
+        android:id="@+id/homepage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/register_button"
+        android:layout_centerHorizontal="true"
+        android:text="@string/homepage_text"
+        android:textAlignment="center"/>
 
 </RelativeLayout>
