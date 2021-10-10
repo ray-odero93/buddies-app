@@ -10,4 +10,7 @@
     <string name="button_text">Create Account</string>
     <string name="homepage_text">Already have an account? Sign in.</string>
     <string name="welcome_text">Welcome!</string>
+    <string name="new_account_text">Need new Account? Sign up here!</string>
+    <string name="login_button_text">Login.</string>
+    <string name="forget_pass_text">Forgot password?</string>
 </resources>
