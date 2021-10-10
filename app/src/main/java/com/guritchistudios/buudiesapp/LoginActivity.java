@@ -26,8 +26,13 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText name, email, password;
@@ -146,5 +151,32 @@ public class LoginActivity extends AppCompatActivity {
     private void loginUser(String userEmail, String userPass) {
         loadingBar.setMessage("Logging in...");
         loadingBar.show();
+
+        mAuth.signInWithEmailAndPassword(userEmail, userPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    loadingBar.dismiss();
+                    FirebaseUser user = mAuth.getCurrentUser();
+
+                    if (task.getResult().getAdditionalUserInfo().isNewUser()) {
+                        String userEmail = user.getEmail();
+                        String userId = user.getUid();
+                        HashMap<Object, String> hashMap = new HashMap<>();
+                        hashMap.put("email", userEmail);
+                        hashMap.put("uid", userId);
+                        hashMap.put("name", "");
+                        hashMap.put("onLineStatus", "online");
+                        hashMap.put("typingTo", "noOne");
+                        hashMap.put("phone", "");
+                        hashMap.put("image", "");
+                        hashMap.put("cover", "");
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        DatabaseReference reference = database.getReference("Users");
+                        reference.child(userId).setValue(hashMap);
+                    }
+                }
+            }
+        });
     }
 }
