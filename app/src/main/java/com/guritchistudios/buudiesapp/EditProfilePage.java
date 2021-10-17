@@ -1,6 +1,7 @@
 package com.guritchistudios.buudiesapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -8,6 +9,7 @@ import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -114,6 +116,10 @@ public class EditProfilePage extends AppCompatActivity {
     private Boolean checkStoragePermission() {
         boolean result = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == (PackageManager.PERMISSION_GRANTED);
         return result;
+    }
+
+    private void requestStoragePermission() {
+        requestPermissions(storagePermission, STORAGE_REQUEST);
     }
 
 
