@@ -23,4 +23,7 @@
     <string name="edit_profile_pic">Update Profile Pic</string>
     <string name="edit_profile_name">Update Profile Name</string>
     <string name="edit_profile_pass">Change Password</string>
+    <string name="update_pass_text">Update Password</string>
+    <string name="old_pass_hint">Old password</string>
+    <string name="new_pass_hint">New password</string>
 </resources>
