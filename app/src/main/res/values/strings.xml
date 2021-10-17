@@ -13,4 +13,9 @@
     <string name="new_account_text">Need new Account? Sign up here!</string>
     <string name="login_button_text">Login</string>
     <string name="forget_pass_text">Forgot password?</string>
+    <string name="home_nav_text">Home</string>
+    <string name="users_nav_text">Users</string>
+    <string name="add_blogs_text">Add</string>
+    <string name="chat_nav_text">Chat</string>
+    <string name="profile_nav_text">Profile</string>
 </resources>
